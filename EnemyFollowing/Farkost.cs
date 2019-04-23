@@ -29,9 +29,11 @@ namespace Farkost
 
         //Enemy
         public Texture2D enemyTexture;
-        List<Enemy> enemyList = new List<Enemy>();
+        public static List<Enemy> enemyList = new List<Enemy>();
         List<Bullets> enemyBulletList = new List<Bullets>();
-        int enemySpawnTimer;
+
+        //Stages
+        LevelManager levelManager;
 
         //Övrigt
         Texture2D background;
@@ -67,9 +69,8 @@ namespace Farkost
 
             backgroundPosition = new Vector2(0, 0);
 
-            enemySpawnTimer = 500;
-
             player = new Player();
+
 
             base.Initialize();
         }
@@ -128,6 +129,10 @@ namespace Farkost
             // TODO: Add your update logic here
             keyboard = Keyboard.GetState();
 
+            //Uppdatera stages
+            levelManager = new LevelManager(enemyTexture);
+            levelManager.Update(gameTime);
+
             //Uppdatera spelaren
             player.Update(gameTime);
 
@@ -145,8 +150,8 @@ namespace Farkost
             {
                 Exit();
             }
-            
-            //Skapa fiende
+
+            /*//Skapa fiende
             enemySpawnTimer--;
             if (enemySpawnTimer == 0)
             {
@@ -155,7 +160,7 @@ namespace Farkost
                 enemy.position = new Vector2(50, 30);
                 enemy.enemyShootTimer = 55;
                 enemySpawnTimer = 100;
-            }
+            }*/
 
             //Fiende rörelse
             foreach (Enemy enemy in enemyList)
@@ -187,7 +192,7 @@ namespace Farkost
                     enemy.enemyShootTimer = 70;
                 }
             }
-            
+
             //Skapa hitbox för bullets
             foreach (Bullets bullet in bulletList)
             {
@@ -218,7 +223,6 @@ namespace Farkost
                         {
                             enemyHit.Play(0.6f, 0, 0);
                             enemy.HP--;
-                            return;
                         }
                     }
                 }
@@ -322,13 +326,12 @@ namespace Farkost
                 {
                     enemy.Draw(spriteBatch);
                 }
-                
             }
 
-
-            foreach (Bullets bullet in enemyBulletList)
+            //Rita ut fiendens bullets
+            foreach (Bullets enemyBullet in enemyBulletList)
             {
-                bullet.Draw(spriteBatch);
+                enemyBullet.Draw(spriteBatch);
             }
 
             //Rita ut bullets

@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Farkost
 {
-    class LevelManager
+    public class LevelManager
     {
         public int level;
-        public List<Enemy> enemies = new List<Enemy>();
         public Texture2D textureForEnemy;
 
         public LevelManager(Texture2D _textureForEnemy)
@@ -21,7 +20,8 @@ namespace Farkost
 
         public void Update(GameTime gameTime)
         {
-            if(enemies.Count == 0)
+            
+            if (Game1.enemyList.Count <= 0)
             {
                 level++;
             }
@@ -31,7 +31,7 @@ namespace Farkost
                 for (int i = 0; i < 1; i++)
                 {
                     Enemy enemy = new Enemy(textureForEnemy);
-                    enemies.Add(enemy);
+                    Game1.enemyList.Add(enemy);
                     enemy.position = new Vector2(50, 30);
                     enemy.enemyShootTimer = 100;
                 }
@@ -41,7 +41,7 @@ namespace Farkost
                 for (int i = 0; i < 2; i++)
                 {
                     Enemy enemy = new Enemy(textureForEnemy);
-                    enemies.Add(enemy);
+                    Game1.enemyList.Add(enemy);
                     enemy.position = new Vector2(50, 30);
                     enemy.enemyShootTimer = 100;
                 }
@@ -51,7 +51,7 @@ namespace Farkost
                 for (int i = 0; i < 4; i++)
                 {
                     Enemy enemy = new Enemy(textureForEnemy);
-                    enemies.Add(enemy);
+                    Game1.enemyList.Add(enemy);
                     enemy.position = new Vector2(50, 30);
                     enemy.enemyShootTimer = 100;
                 }
@@ -61,16 +61,18 @@ namespace Farkost
                 for (int i = 0; i < 8; i++)
                 {
                     Enemy enemy = new Enemy(textureForEnemy);
-                    enemies.Add(enemy);
+                    Game1.enemyList.Add(enemy);
                     enemy.position = new Vector2(50, 30);
                     enemy.enemyShootTimer = 100;
                 }
             }
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Enemy enemy in enemies)
+            foreach (Enemy enemy in Game1.enemyList)
             {
                 spriteBatch.Draw(textureForEnemy, enemy.position, Color.White);
             }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Farkost
 {
-    class Enemy
+    public class Enemy
     {
         public Texture2D texture;
         public Rectangle enemyBox;
