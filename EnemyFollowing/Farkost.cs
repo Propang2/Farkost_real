@@ -18,7 +18,6 @@ namespace Farkost
 
         //Spelare
         Player player;
-        Texture2D test;
 
         //BulletData
         public static Texture2D bulletTexture;
