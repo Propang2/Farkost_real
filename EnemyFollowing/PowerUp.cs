@@ -23,6 +23,7 @@ namespace Farkost
 
         public void Update(GameTime gameTime)
         {
+            timer--;
             position += speed;
         }
 

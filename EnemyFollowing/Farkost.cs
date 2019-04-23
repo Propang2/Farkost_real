@@ -263,25 +263,22 @@ namespace Farkost
                 }
             }
 
-            //powerUp
-            foreach (PowerUp powerUp in powerUpList)
-            {
-                PowerUp.timer--;
 
-                Rectangle powerUpBox = new Rectangle((int)powerUp.position.X, (int)powerUp.position.Y, powerUpTexture.Width, powerUpTexture.Height);
+
+            //powerUp
+            for (int i = 0; i < powerUpList.Count; i++)
+            {
+                powerUpList[i].Update(gameTime);
+
+                Rectangle powerUpBox = new Rectangle((int)powerUpList[i].position.X, (int)powerUpList[i].position.Y, powerUpTexture.Width, powerUpTexture.Height);
 
                 if (powerUpBox.Intersects(hitBox))
                 {
+                    powerUpList.RemoveAt(i);
                     PowerUp.timer = 1000;
+                    i--;
                 }
-
-                powerUp.Update(gameTime);
             }
-
-
-
-
-
             base.Update(gameTime);
         }
 
