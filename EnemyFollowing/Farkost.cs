@@ -44,7 +44,7 @@ namespace Farkost
         public SoundEffect explosionLjud;
         public SoundEffect enemyHit;
         public KeyboardState keyboard;
-        Random rnd = new Random();
+        public static Random rnd = new Random();
 
         public Game1()
         {
@@ -105,6 +105,9 @@ namespace Farkost
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.3f;
             MediaPlayer.Play(music);
+
+            //Övrigt
+            levelManager = new LevelManager(enemyTexture);
         }
 
         /// <summary>
@@ -130,7 +133,6 @@ namespace Farkost
             keyboard = Keyboard.GetState();
 
             //Uppdatera stages
-            levelManager = new LevelManager(enemyTexture);
             levelManager.Update(gameTime);
 
             //Uppdatera spelaren
