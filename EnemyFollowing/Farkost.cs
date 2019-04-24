@@ -30,7 +30,7 @@ namespace Farkost
         //Enemy
         public Texture2D enemyTexture;
         public static List<Enemy> enemyList = new List<Enemy>();
-        List<Bullets> enemyBulletList = new List<Bullets>();
+        public static List<Bullets> enemyBulletList = new List<Bullets>();
 
         //Stages
         LevelManager levelManager;
@@ -87,7 +87,7 @@ namespace Farkost
             // TODO: use this.Content to load your game content here
 
             //Sprites
-            player.playerTexture = Content.Load<Texture2D>("player");
+            Player.playerTexture = Content.Load<Texture2D>("player");
             player.playerTurnRight = Content.Load<Texture2D>("playerTurnRight");
             player.playerTurnLeft = Content.Load<Texture2D>("playerTurnLeft");
             background = Content.Load<Texture2D>("BAKGRUNDEN");
@@ -139,9 +139,9 @@ namespace Farkost
             player.Update(gameTime);
 
              //"Marken"
-            if (player.playerPos.Y >= 600 - player.playerTexture.Height)
+            if (player.playerPos.Y >= 600 - Player.playerTexture.Height)
             {
-                player.playerPos.Y = 600 - player.playerTexture.Height;
+                player.playerPos.Y = 600 - Player.playerTexture.Height;
             }
             
             //Spelare hitbox
@@ -153,47 +153,9 @@ namespace Farkost
                 Exit();
             }
 
-            /*//Skapa fiende
-            enemySpawnTimer--;
-            if (enemySpawnTimer == 0)
-            {
-                Enemy enemy = new Enemy(enemyTexture);
-                enemyList.Add(enemy);
-                enemy.position = new Vector2(50, 30);
-                enemy.enemyShootTimer = 55;
-                enemySpawnTimer = 100;
-            }*/
+            
 
-            //Fiende rörelse
-            foreach (Enemy enemy in enemyList)
-            {
-                enemy.position += enemy.speed;
-
-                if (enemy.position.X >= 350)
-                {
-                    enemy.speed.X = -5;
-                }
-                else if (enemy.position.X <= -50)
-                {
-                    enemy.speed.X = 5;
-                }
-            }
-
-            //Fiende skott
-            foreach (Enemy enemy in enemyList)
-            {
-                enemy.enemyShootTimer--;
-
-                if (enemy.enemyShootTimer == 0)
-                {
-                    laserLjud.Play(0.3f, 0, 0);
-                    Bullets newBullet = new Bullets(bulletTexture);
-                    newBullet.speed = new Vector2(0, 5);
-                    newBullet.position = new Vector2(enemy.position.X + player.playerTexture.Width / 2.6f, enemy.position.Y + player.playerTexture.Height);
-                    enemyBulletList.Add(newBullet);
-                    enemy.enemyShootTimer = (Game1.rnd.Next(0, 100));
-                }
-            }
+            
 
             //Skapa hitbox för bullets
             foreach (Bullets bullet in bulletList)
@@ -238,7 +200,7 @@ namespace Farkost
                     {
                         explosionLjud.Play(0.3f, 0, 0);
 
-                        if (rnd.Next(0, 50) == 0)
+                        if (rnd.Next(0, 20) == 0)
                         {
                             PowerUp powerUp = new PowerUp(powerUpTexture);
                             powerUpList.Add(powerUp);
@@ -314,7 +276,7 @@ namespace Farkost
             }
             else
             {
-                spriteBatch.Draw(player.playerTexture, player.playerPos, Color.White);
+                spriteBatch.Draw(Player.playerTexture, player.playerPos, Color.White);
             }
 
             //Rita ut fiende
