@@ -20,54 +20,53 @@ namespace Farkost
 
         public void Update(GameTime gameTime)
         {
-            
+
             if (Game1.enemyList.Count <= 0)
             {
                 level++;
-            }
 
-            if (level == 1)
-            {
-                for (int i = 0; i < 1; i++)
+                if (level == 1)
                 {
-                    Enemy enemy = new Enemy(textureForEnemy);
-                    Game1.enemyList.Add(enemy);
-                    enemy.position = new Vector2(50, 30);
-                    enemy.enemyShootTimer = 100;
+                    for (int i = 0; i < 1; i++)
+                    {
+                        Enemy enemy = new Enemy(textureForEnemy);
+                        Game1.enemyList.Add(enemy);
+                        enemy.position = new Vector2(0, 30);
+                        enemy.enemyShootTimer = 100;
+                    }
                 }
-            }
-            else if (level == 2)
-            {
-                for (int i = 0; i < 2; i++)
+                else if (level == 2)
                 {
-                    Enemy enemy = new Enemy(textureForEnemy);
-                    Game1.enemyList.Add(enemy);
-                    enemy.position = new Vector2(50, 30);
-                    enemy.enemyShootTimer = 100;
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Enemy enemy = new Enemy(textureForEnemy);
+                        Game1.enemyList.Add(enemy);
+                        enemy.position = new Vector2(Game1.rnd.Next(0, 500), (Game1.rnd.Next(0, 100)));
+                        enemy.enemyShootTimer = 100;
+                    }
                 }
-            }
-            else if (level == 3)
-            {
-                for (int i = 0; i < 4; i++)
+                else if (level == 3)
                 {
-                    Enemy enemy = new Enemy(textureForEnemy);
-                    Game1.enemyList.Add(enemy);
-                    enemy.position = new Vector2(50, 30);
-                    enemy.enemyShootTimer = 100;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Enemy enemy = new Enemy(textureForEnemy);
+                        Game1.enemyList.Add(enemy);
+                        enemy.position = new Vector2(Game1.rnd.Next(0, 500), (Game1.rnd.Next(0, 100)));
+                        enemy.enemyShootTimer = 100;
+                    }
                 }
-            }
-            else if (level == 4)
-            {
-                for (int i = 0; i < 8; i++)
+                else if (level == 4)
                 {
-                    Enemy enemy = new Enemy(textureForEnemy);
-                    Game1.enemyList.Add(enemy);
-                    enemy.position = new Vector2(50, 30);
-                    enemy.enemyShootTimer = 100;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        Enemy enemy = new Enemy(textureForEnemy);
+                        Game1.enemyList.Add(enemy);
+                        enemy.position = new Vector2(Game1.rnd.Next(0, 500), (Game1.rnd.Next(0, 100)));
+                        enemy.enemyShootTimer = 100;
+                    }
                 }
-            }
 
-
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

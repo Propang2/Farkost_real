@@ -44,7 +44,7 @@ namespace Farkost
         public SoundEffect explosionLjud;
         public SoundEffect enemyHit;
         public KeyboardState keyboard;
-        Random rnd = new Random();
+        public static Random rnd = new Random();
 
         public Game1()
         {
@@ -105,6 +105,9 @@ namespace Farkost
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.3f;
             MediaPlayer.Play(music);
+
+            //Övrigt
+            levelManager = new LevelManager(enemyTexture);
         }
 
         /// <summary>
@@ -130,7 +133,6 @@ namespace Farkost
             keyboard = Keyboard.GetState();
 
             //Uppdatera stages
-            levelManager = new LevelManager(enemyTexture);
             levelManager.Update(gameTime);
 
             //Uppdatera spelaren
@@ -189,7 +191,7 @@ namespace Farkost
                     newBullet.speed = new Vector2(0, 5);
                     newBullet.position = new Vector2(enemy.position.X + player.playerTexture.Width / 2.6f, enemy.position.Y + player.playerTexture.Height);
                     enemyBulletList.Add(newBullet);
-                    enemy.enemyShootTimer = 70;
+                    enemy.enemyShootTimer = rnd.Next(5, 100);
                 }
             }
 
@@ -236,7 +238,7 @@ namespace Farkost
                     {
                         explosionLjud.Play(0.3f, 0, 0);
 
-                        if (rnd.Next(0, 2) == 0)
+                        if (rnd.Next(0, 20) == 0)
                         {
                             PowerUp powerUp = new PowerUp(powerUpTexture);
                             powerUpList.Add(powerUp);
