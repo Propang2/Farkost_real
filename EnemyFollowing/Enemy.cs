@@ -22,7 +22,7 @@ namespace Farkost
         {
             texture = _texture;
             speed = new Vector2(5, 0);
-            HP = 8;
+            HP = 50;
         }
 
         public void Draw(SpriteBatch spriteBatch)

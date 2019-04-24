@@ -191,7 +191,7 @@ namespace Farkost
                     newBullet.speed = new Vector2(0, 5);
                     newBullet.position = new Vector2(enemy.position.X + player.playerTexture.Width / 2.6f, enemy.position.Y + player.playerTexture.Height);
                     enemyBulletList.Add(newBullet);
-                    enemy.enemyShootTimer = 70;
+                    enemy.enemyShootTimer = (Game1.rnd.Next(0, 100));
                 }
             }
 
@@ -238,7 +238,7 @@ namespace Farkost
                     {
                         explosionLjud.Play(0.3f, 0, 0);
 
-                        if (rnd.Next(0, 2) == 0)
+                        if (rnd.Next(0, 50) == 0)
                         {
                             PowerUp powerUp = new PowerUp(powerUpTexture);
                             powerUpList.Add(powerUp);
@@ -281,7 +281,7 @@ namespace Farkost
                 if (powerUpBox.Intersects(hitBox))
                 {
                     powerUpList.RemoveAt(i);
-                    PowerUp.timer = 1000;
+                    PowerUp.timer = 100;
                     i--;
                 }
             }

@@ -32,7 +32,7 @@ namespace Farkost
                         Enemy enemy = new Enemy(textureForEnemy);
                         Game1.enemyList.Add(enemy);
                         enemy.position = new Vector2(50, 30);
-                        enemy.enemyShootTimer = 100;
+                        enemy.enemyShootTimer = 1;
                     }
                 }
                 else if (level == 2)
@@ -41,8 +41,8 @@ namespace Farkost
                     {
                         Enemy enemy = new Enemy(textureForEnemy);
                         Game1.enemyList.Add(enemy);
-                        enemy.position = new Vector2(Game1.rnd.Next(50, 400), 30);
-                        enemy.enemyShootTimer = 100;
+                        enemy.position = new Vector2(Game1.rnd.Next(50, 400), (Game1.rnd.Next(0, 200)));
+                        enemy.enemyShootTimer = 1;
                     }
                 }
                 else if (level == 3)
@@ -51,8 +51,8 @@ namespace Farkost
                     {
                         Enemy enemy = new Enemy(textureForEnemy);
                         Game1.enemyList.Add(enemy);
-                        enemy.position = new Vector2(50, 30);
-                        enemy.enemyShootTimer = 100;
+                        enemy.position = new Vector2(Game1.rnd.Next(50, 400), (Game1.rnd.Next(0, 200)));
+                        enemy.enemyShootTimer = 1;
                     }
                 }
                 else if (level == 4)
@@ -61,8 +61,8 @@ namespace Farkost
                     {
                         Enemy enemy = new Enemy(textureForEnemy);
                         Game1.enemyList.Add(enemy);
-                        enemy.position = new Vector2(50, 30);
-                        enemy.enemyShootTimer = 100;
+                        enemy.position = new Vector2(Game1.rnd.Next(50, 400), (Game1.rnd.Next(0, 200)));
+                        enemy.enemyShootTimer = 1;
                     }
                 }
 
