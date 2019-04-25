@@ -50,8 +50,8 @@ namespace Farkost
         {
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = 400;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
+            graphics.PreferredBackBufferWidth = 800;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 1000;   // set this value to the desired height of your window
             graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
@@ -139,9 +139,9 @@ namespace Farkost
             player.Update(gameTime);
 
              //"Marken"
-            if (player.playerPos.Y >= 600 - Player.playerTexture.Height)
+            if (player.playerPos.Y >= 1000 - Player.playerTexture.Height)
             {
-                player.playerPos.Y = 600 - Player.playerTexture.Height;
+                player.playerPos.Y = 1000 - Player.playerTexture.Height;
             }
             
             //Spelare hitbox
@@ -199,7 +199,7 @@ namespace Farkost
                     {
                         explosionLjud.Play(0.3f, 0, 0);
 
-                        if (rnd.Next(0, 20) == 0)
+                        if (rnd.Next(0, 1) == 0)
                         {
                             PowerUp powerUp = new PowerUp(powerUpTexture);
                             powerUpList.Add(powerUp);
@@ -262,7 +262,7 @@ namespace Farkost
             spriteBatch.Begin();
 
             //Rita ut bakgrund
-            spriteBatch.Draw(background, backgroundPosition, Color.DarkGreen);
+            //spriteBatch.Draw(background, backgroundPosition, Color.DarkGreen);
 
             //Rita ut spelare
             if(player.turningRight == true)

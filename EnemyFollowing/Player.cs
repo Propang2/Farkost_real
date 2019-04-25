@@ -26,10 +26,10 @@ namespace Farkost
 
         public Player()
         {
-            playerPos = new Vector2(200, 500);
+            playerPos = new Vector2(400, 900);
             playerSpeed = new Vector2(0, 0);
-            HP = 3;
-            shootTimer = 10;
+            HP = 5;
+            shootTimer = 5;
         }
 
         public void TrippleMachineGun()
@@ -134,7 +134,7 @@ namespace Farkost
                 }
                 else
                 {
-                    shootTimer = 10;
+                    shootTimer = 5;
                     TrippleMachineGun();
                 }
 
@@ -142,15 +142,15 @@ namespace Farkost
 
 
             //X-rullning
-            if (playerPos.X < -playerTexture.Width)
+            /*if (playerPos.X < -playerTexture.Width)
             {
-                playerPos = new Vector2(400, playerPos.Y);
+                playerPos = new Vector2(800, playerPos.Y);
             }
-            else if (playerPos.X > 400)
+            else if (playerPos.X > 800)
             {
                 playerPos = new Vector2(-playerTexture.Width, playerPos.Y);
             }
-
+            */
         }
 
         void Draw(SpriteBatch spriteBatch)

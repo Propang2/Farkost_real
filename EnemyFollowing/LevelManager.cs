@@ -25,7 +25,7 @@ namespace Farkost
             {
                 enemy.position += enemy.speed;
 
-                if (enemy.position.X >= 350)
+                if (enemy.position.X >= 750)
                 {
                     enemy.speed.X = -5;
                 }
@@ -65,12 +65,13 @@ namespace Farkost
                 }
                 else if (level == 2)
                 {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Enemy enemy = new Enemy(textureForEnemy);
-                        Game1.enemyList.Add(enemy);
-                        enemy.position = new Vector2(Game1.rnd.Next(50, 400), (Game1.rnd.Next(0, 200)));
-                    }
+                    Enemy enemy = new Enemy(textureForEnemy);
+                    Game1.enemyList.Add(enemy);
+                    enemy.position = new Vector2(-50, 200);
+
+                    Enemy enemy2 = new Enemy(textureForEnemy);
+                    Game1.enemyList.Add(enemy2);
+                    enemy2.position = new Vector2(350, 100);
                 }
                 else if (level == 3)
                 {
@@ -78,7 +79,10 @@ namespace Farkost
                     {
                         Enemy enemy = new Enemy(textureForEnemy);
                         Game1.enemyList.Add(enemy);
-                        enemy.position = new Vector2(Game1.rnd.Next(50, 400), (Game1.rnd.Next(0, 200)));
+                        enemy.position = new Vector2(0, 100);
+
+                        enemy.position.X += 50 * i;
+                        enemy.position.Y += 50 * i;
                     }
                 }
                 else if (level == 4)
