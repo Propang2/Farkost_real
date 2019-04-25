@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Farkost
 {
-    class PowerUp
+    public class PowerUp
     {
         public Vector2 position;
         public Vector2 speed;

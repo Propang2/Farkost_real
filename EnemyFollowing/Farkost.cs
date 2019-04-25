@@ -25,7 +25,7 @@ namespace Farkost
 
         //Powerup
         Texture2D powerUpTexture;
-        List<PowerUp> powerUpList = new List<PowerUp>();
+        public List<PowerUp> powerUpList = new List<PowerUp>();
 
         //Enemy
         public Texture2D enemyTexture;
@@ -241,7 +241,6 @@ namespace Farkost
 
                 if (powerUpBox.Intersects(hitBox))
                 {
-                    powerUpList.RemoveAt(i);
                     PowerUp.timer = 100;
                     i--;
                 }
