@@ -23,6 +23,7 @@ namespace Farkost
             texture = _texture;
             speed = new Vector2(5, 0);
             HP = 50;
+            enemyShootTimer = 1;
         }
 
         public void Draw(SpriteBatch spriteBatch)

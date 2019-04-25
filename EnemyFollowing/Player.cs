@@ -12,7 +12,7 @@ namespace Farkost
     class Player
     {   
         //Player variables
-        public Texture2D playerTexture;
+        public static Texture2D playerTexture;
         public Texture2D playerTurnRight;
         public Texture2D playerTurnLeft;
         public Vector2 playerPos;
@@ -28,7 +28,7 @@ namespace Farkost
         {
             playerPos = new Vector2(200, 500);
             playerSpeed = new Vector2(0, 0);
-            HP = 10;
+            HP = 3;
             shootTimer = 10;
         }
 
@@ -150,6 +150,7 @@ namespace Farkost
             {
                 playerPos = new Vector2(-playerTexture.Width, playerPos.Y);
             }
+
         }
 
         void Draw(SpriteBatch spriteBatch)
