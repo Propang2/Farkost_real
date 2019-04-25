@@ -177,17 +177,16 @@ namespace Farkost
             }
 
             //Bullets träffar fiender
-            foreach (Bullets bullet in bulletList) 
+            for (int j = 0; j < bulletList.Count; j++) 
             {
-                foreach (Enemy enemy in enemyList)
+                for (int i = 0; i < enemyList.Count; i++)
                 {
-                    for(int i = 0; i < enemyList.Count; i++)
+                    if (bulletList[j].bulletBox.Intersects(enemyList[i].enemyBox))
                     {
-                        if (bullet.bulletBox.Intersects(enemy.enemyBox))
-                        {
-                            enemyHit.Play(0.6f, 0, 0);
-                            enemy.HP--;
-                        }
+                        bulletList.RemoveAt(j);
+                        j--;
+                        enemyHit.Play(0.6f, 0, 0);
+                        enemyList[i].HP--;
                     }
                 }
             }
