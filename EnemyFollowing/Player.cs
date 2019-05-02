@@ -28,7 +28,7 @@ namespace Farkost
         {
             playerPos = new Vector2(400, 900);
             playerSpeed = new Vector2(0, 0);
-            HP = 5;
+            HP = 50000;
             shootTimer = 5;
         }
 

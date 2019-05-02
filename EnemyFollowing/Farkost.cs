@@ -29,6 +29,7 @@ namespace Farkost
 
         //Enemy
         public Texture2D enemyTexture;
+        public Texture2D bossTexture;
         public static List<Enemy> enemyList = new List<Enemy>();
         public static List<Bullets> enemyBulletList = new List<Bullets>();
 
@@ -94,6 +95,7 @@ namespace Farkost
             bulletTexture = Content.Load<Texture2D>("bullet");
             enemyTexture = Content.Load<Texture2D>("enemy");
             powerUpTexture = Content.Load<Texture2D>("powerup");
+            bossTexture = Content.Load<Texture2D>("boss");
 
             //Musik och ljud
             music = Content.Load<Song>("music");
@@ -107,7 +109,7 @@ namespace Farkost
             MediaPlayer.Play(music);
 
             //Övrigt
-            levelManager = new LevelManager(enemyTexture);
+            levelManager = new LevelManager(enemyTexture, bossTexture);
         }
 
         /// <summary>
@@ -128,8 +130,7 @@ namespace Farkost
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // TODO: Add your update logic here
+            
             keyboard = Keyboard.GetState();
 
             //Uppdatera stages
@@ -290,6 +291,8 @@ namespace Farkost
                     enemy.Draw(spriteBatch);
                 }
             }
+
+
 
             //Rita ut fiendens bullets
             foreach (Bullets enemyBullet in enemyBulletList)
